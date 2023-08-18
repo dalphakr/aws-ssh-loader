@@ -55,3 +55,6 @@ target/
 
 # Ignore the local output file
 outfile-example
+
+source.conf
+ssh-config

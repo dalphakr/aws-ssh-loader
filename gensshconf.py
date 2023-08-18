@@ -76,8 +76,6 @@ def parse_files(input_dir, output_type):
     for dict_file_key, dict_file in conf_files.items():
         default_values = set()
 
-        out.append("# Content from {0}".format(dict_file_key))
-
         for inner_key, inner_value in dict_file.items():
             if inner_key == "Options":
                 for elem in inner_value.items():
