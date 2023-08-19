@@ -1,10 +1,12 @@
 #!/bin/bash
 
-export TEST_INSTANCE_KEY_PATH=<insert your keypair path>
+SCRIPT_PATH="${BASH_SOURCE:-$0}"
+BASE_DIR="$(dirname -- $SCRIPT_PATH)"
+source "$BASE_DIR/.ssh-map"
 
 aws ec2 describe-instances \
     | jq '.Reservations[].Instances[] | select(.State.Code==16) | {Host: (.Tags[] | select(.Key == "Name") | .Value), IdentityFile: (if (.KeyName == "test_instance_key_pair") then env.TEST_INSTANCE_KEY_PATH else .KeyName end), HostName: .NetworkInterfaces[].PrivateIpAddress, User: "ubuntu"}' \
     | jq -n '.Hosts |= [inputs]' > source.conf
 
-./gensshconf.py -s . > ./ssh-config
+$BASE_DIR/gensshconf.py -s $BASE_DIR > $BASE_DIR/ssh-config
 

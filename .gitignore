@@ -58,3 +58,5 @@ outfile-example
 
 source.conf
 ssh-config
+.ssh-map
+

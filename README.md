@@ -16,8 +16,8 @@ git clone git@github.com:dalphakr/aws-ssh-loader.git
 $ export PATH=$PATH:~/aws-ssh-loader
 
 # 일부 key pair 의 경우 jq 라는 parser 에서 실제 identity file 위치로 변경해줍니다.
-# ec2sync 에 현재 로컬에 갖고 있는 pem 파일 위치를 명시합니다.
-# in ec2sync file
+# 설치한 위치에 .ssh-map 파일을 만들고 현재 로컬에 갖고 있는 pem 파일 위치를 명시합니다.
+# in .ssh-map
 export TEST_INSTANCE_KEY_PATH=<insert your keypair path>
 ```
 
